@@ -1,7 +1,33 @@
 body {
-  background-color: #283753;
+  background-color: #5786de;
 }
 
 button{
-    margin: 10%;
+    margin: 5%;
+    color:#5786de
+}
+
+table {
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+td {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #f30707;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 50px;
+  font-family: 'Arvo', sans-serif;
+  text-transform: uppercase;
+}
+
+#declare{
+  margin-right:10%;
+  margin-left:10%;
+  margin-top:5%;
+}
+
+.black{
+  background-color:black;
 }

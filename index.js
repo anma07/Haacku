@@ -10,7 +10,8 @@ let yescount6=0;
 let yescount12=0;
 let yescount3=0;
 let yescount1=0;
-console.log(yesbutton6.length);
+let flag=0;
+// console.log(yesbutton6.length);
 
 nobtn.addEventListener("click", ()=>{
     // console.log("Hello, no is working");
@@ -36,9 +37,27 @@ nobtn.addEventListener("click", ()=>{
     }
 })
 
-//this will take you back to wf html
-const backtowf = document.getElementById("backtowf");
+//this will take you back to wf html with special message
+const bait1 = document.getElementById("bait1");
+const rb1 = document.querySelectorAll(".col-11.d-none");
+console.log(rb1);
 
-backtowf.addEventListener("click", ()=>{
-    
+bait1.addEventListener("click", ()=>{
+    localStorage.setItem("flag", "1");
+    window.location.href="win_vs_fed.html";
+})
+
+console.log(rb1.length);
+
+if (localStorage.get("flag") === "1") {
+    rb1[0].classList.remove("d-none");
+}
+
+//start the legendary TIKTAKTOS
+const tttstart = document.getElementById("tttstart");
+const body = document.querySelectorAll(".bodyttt");
+
+tttstart.addEventListener("click", ()=>{
+    console.log("tttstart was pressed");
+    body.classList.add("black");
 })
