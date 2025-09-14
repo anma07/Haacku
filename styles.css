@@ -1,10 +1,10 @@
 body {
-  background-color: #5786de;
+  background-color: #5aff3d;
 }
 
 button{
     margin: 5%;
-    color:#5786de
+    color:#53ff09
 }
 
 table {
@@ -30,4 +30,18 @@ td {
 
 .black{
   background-color:black;
+  color:black;
+}
+
+/* .bodyttt{
+  background-color: black;
+  color:black;
+} */
+
+#tttback{
+  color:aliceblue;
+}
+
+.blue{
+  color:blue;
 }
