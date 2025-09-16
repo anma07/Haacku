@@ -1,5 +1,5 @@
 body {
-  background-color: #5aff3d;
+  background-color:rgb(255, 255, 255)
 }
 
 button{
@@ -52,4 +52,44 @@ td {
 
 .square{
   color:black
+}
+
+.pink{
+  background-color:greenyellow
+}
+
+#toothlesswins{
+  font-size:100px;
+}
+
+#titlewf{
+  font-size: 60px;
+}
+
+#myCell{
+  border: 1px solid #0c0b0b;
+  border-radius: 5px;
+  height: 35px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background: #fff;
+}
+
+#tableh3{
+  margin: 0;
+  font-size: 25px;
+  padding-top: 5%;
+}
+
+#tableh5{
+  margin: 5px 0 10px 0;
+  font-size: 20px;
+  font-weight: normal;
+  color: #666;
+}
+
+#usernamepage{
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  height: 100vh;
 }

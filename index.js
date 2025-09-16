@@ -89,6 +89,7 @@ if(tttstart){
 const square = document.querySelectorAll(".square");
 // console.log(square.length);
 const status = document.getElementById("status");
+const toothlesswins = document.getElementById("toothlesswins")
 
 let state = ["", "", "", "", "", "", "", "", ""];
 let random = ["0","1", "2", "3", "4", "5", "6", "7", "8"];
@@ -114,13 +115,9 @@ function click(e){
         delay1().then(()=>{
             toothlessplay();
         });
-        if(checkpatternpresence(user, state)){
-
-        }
-        else if(checkpatternpresence(toothless, state)){
-
-        }
-
+        coloursquare().then(()=>{
+            console.log("checkwin done");
+        });
     }
     else{
 
@@ -183,4 +180,99 @@ function checkpatternpresence(player, board){
     }
     if (state.length === 0) return true;
     return false;
+}
+
+//Toothless alwayss wins
+async function coloursquare(){
+    //Toothless wins even if user completes
+    if(checkpatternpresence(user, state)){
+        console.log("Technically X won");
+        for(i=0;i<3;i++){
+            squareindex=first3[i];
+            const sqaure = document.getElementById("square"+squareindex);
+            await delay1();
+            sqaure.classList.add("pink");
+        }
+        toothlesswins.classList.remove("d-none");
+        ttton = false;
+    }
+    //Toothless wins when he wins
+    else if(checkpatternpresence(toothless, state)){
+        for(p=0;p<3;p++){
+            squareindex=patterns[indexcolor];
+            const sqaure = document.getElementById("square"+squareindex);
+            await delay1();
+            sqaure.classList.add("pink");
+        }
+        toothlesswins.classList.remove("d-none");
+        ttton = false;
+    }
+    //Toothless wins after tie
+    else if(!checkpatternpresence && random.length===0){
+        for(i=0;i<3;i++){
+            squareindex=first3[i];
+            const sqaure = document.getElementById("square"+squareindex);
+            await delay1();
+            sqaure.classList.add("pink");
+        }
+        toothlesswins.classList.remove("d-none");
+        ttton = false;
+    }
+}
+
+//username javascript
+
+const usernamepage = document.getElementById("usernamepage");
+const myCell = document.getElementById("myCell");
+// console.log(myCell.length);
+let textc = "";
+
+if(usernamepage){
+    document.addEventListener('keydown',function(event){
+        changeKeys_username(event.key);
+        console.log(textc);
+        myCell.textContent = textc;
+    });
+}
+
+function changeKeys_username(key){
+    switch (key) {
+        case "y":
+        case "w":
+        case "u":
+        case "s":
+        case "q":
+        case "o":
+        case "m":
+        case "k":
+        case "i":
+        case "g":
+        case "e":
+        case "c":
+        case "a":
+            textc = textc + "1";
+            break;
+        
+        case "z":
+        case "x":
+        case "v":
+        case "t":
+        case "r":
+        case "p":    
+        case "n":    
+        case "l":
+        case "j":    
+        case "h":
+        case "f":    
+        case "d":    
+        case "b":
+        case "Delete":
+            textc = textc + "0";
+            break;
+
+        case "Enter":
+        case "Backspace":
+            textc = "";
+            break;
+    }
 }
