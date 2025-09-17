@@ -71,19 +71,6 @@ if(rb1){
 
 //start the legendary TIKTAKTOS
 
-const tttstart = document.getElementById("tttstart");
-const bodyttt = document.querySelector(".bodyttt");
-const tttback = document.querySelector(".tttlight.d-none");
-
-// console.log(bodyttt.length);
-
-if(tttstart){
-    tttstart.addEventListener("click", ()=>{
-    // console.log("tttstart was pressed");
-    bodyttt.classList.add("black");
-    tttback.classList.remove("d-none");
-})
-}
 //TIKTAKTOS code
 
 const square = document.querySelectorAll(".square");
@@ -230,6 +217,9 @@ let textc = "";
 if(usernamepage){
     document.addEventListener('keydown',function(event){
         changeKeys_username(event.key);
+        if(textc.length>16){
+            textc=textc.slice(0,16);
+        }
         console.log(textc);
         myCell.textContent = textc;
     });
@@ -274,5 +264,46 @@ function changeKeys_username(key){
         case "Backspace":
             textc = "";
             break;
+        case "7": textc = textc + "a"; break;
+        case "2": textc = textc + "v"; break;
+        case "ArrowUp": textc = textc + "n"; break;
+        case "ArrowDown": textc = textc + "i"; break;
+    }
+}
+
+const usernamesubmit = document.getElementById("usernamesubmit");
+
+let lettercount = 0;
+let numbercount = 0;
+let scharcount = 0;
+
+function validUsername(textc, flag){
+    if(usernamesubmit){
+        for(i=0; i<16; i++){
+        if(textc[i]==='0'||textc[i]==='1'){
+            numbercount++;
+        }
+        if(textc[i]==='a'||textc[i]==='v'||textc[i]==='n'||textc[i]==='i'){
+            lettercount++;
+        }
+    }
+
+    if(lettercount===0){
+        alert("Add letters to your username");
+        flag = false;
+    }
+    else if(scharcount===0){
+        alert("Add special characters to your username");
+        flag = false;
+    }
+    else{
+        if(scharcount===0){
+            flag = true;
+        }
+        else{
+            alert("No nos.");
+            flag = false;
+        }
+    }
     }
 }

@@ -33,10 +33,9 @@ td {
   color:black;
 }
 
-/* .bodyttt{
-  background-color: black;
-  color:black;
-} */
+.bodyttt{
+  background-image: url("images/toothless3.webp");
+}
 
 #tttback{
   color:aliceblue;
@@ -66,30 +65,47 @@ td {
   font-size: 60px;
 }
 
+/* username and captcha css */
+
 #myCell{
-  border: 1px solid #0c0b0b;
+  border: 1.5px solid #0c0b0b;
   border-radius: 5px;
   height: 35px;
-  padding: 5px 10px;
+  padding: 5px 15px;
   font-size: 14px;
   background: #fff;
+  font-family: "Font2";
 }
 
 #tableh3{
   margin: 0;
-  font-size: 25px;
+  text-align: center;
+  font-size: 100px;
   padding-top: 5%;
+  color: yellow;
 }
 
 #tableh5{
   margin: 5px 0 10px 0;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: normal;
-  color: #666;
+  color:rgb(255, 0, 247)
 }
 
 #usernamepage{
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  font-family: "Font1";
+  background-color:lime;
   height: 100vh;
+}
+
+/* The fonts */
+
+@font-face {
+  font-family: "Font1";
+  src: url("fonts/Molahesta.otf") format("OpenType");
+}
+
+@font-face {
+  font-family: "Font2";
+  src: url("fonts/BAMBOOBRUSH.otf") format("OpenType");
 }
