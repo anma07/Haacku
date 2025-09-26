@@ -14,7 +14,7 @@ let yescount12=0;
 let yescount3=0;
 let yescount1=0;
 
-//got this from google cuz i didnt know how to
+
 const sleep = (delayInMilliseconds) => {
   return new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
 };
@@ -69,148 +69,25 @@ if(rb1){
 }
 }
 
-//start the legendary TIKTAKTOS
-
-//TIKTAKTOS code
-
-const square = document.querySelectorAll(".square");
-// console.log(square.length);
-const status = document.getElementById("status");
-const toothlesswins = document.getElementById("toothlesswins")
-
-let state = ["", "", "", "", "", "", "", "", ""];
-let random = ["0","1", "2", "3", "4", "5", "6", "7", "8"];
-let first3 = ["", "", "", ""];
-let ttton = true;
-let user = "X";
-let toothless = "O";
-let countttt = 0;
-const patterns = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
-let indexcolor = "";
-
-// console.log(square.length); i wrote sqaure somewhere and was trying to figure out what was wrong for half hr, this saved me
-
-function click(e){
-    let index = e.target.dataset.index;
-    if(state[index]==="" && ttton){
-        state[index] = user;
-        console.log(index);
-        e.target.textContent = user;
-        const p = random.indexOf(index);
-        random.splice(p,1);
-        console.log(random);
-        delay1().then(()=>{
-            toothlessplay();
-        });
-        coloursquare().then(()=>{
-            console.log("checkwin done");
-        });
-    }
-    else{
-
-    }
-}
-
-//this is so my toothless can play XD
-function toothlessplay(){
-    let tindex = Math.floor(Math.random() *random.length);
-    let q = random[tindex];
-    state[q] = toothless;
-    console.log(q);
-    square[q].textContent = toothless;
-    const p = random.indexOf(q);
-    random.splice(p,1);
-    console.log(random);
-    first3[countttt]=q;
-    countttt++;
-    console.log(first3);
-}
-
-//the names are getting confusing and mixing up, but its fine -_<
-if(square){
-    square.forEach(square => square.addEventListener("click", click));
-}
-
-//my efficient code was not working >_<
-function checkpatternpresence(player, board){
-    if (board[0] === player && board[1] === player && board[2] === player){
-        indexcolor=0;
-        return true;
-    }
-    if (board[3] === player && board[4] === player && board[5] === player){
-        indexcolor=1;
-        return true;
-    }
-    if (board[6] === player && board[7] === player && board[8] === player){
-        indexcolor=2;
-        return true;
-    }
-    if (board[0] === player && board[3] === player && board[6] === player){
-        indexcolor=3;
-        return true;
-    }
-    if (board[1] === player && board[4] === player && board[7] === player){
-        indexcolor=4;
-        return true;
-    }
-    if (board[2] === player && board[5] === player && board[8] === player){
-        indexcolor=5;
-        return true;
-    }
-    if (board[0] === player && board[4] === player && board[8] === player){
-        indexcolor=6;
-        return true;
-    }
-    if (board[2] === player && board[4] === player && board[6] === player){
-        indexcolor=7;
-        return true;
-    }
-    if (state.length === 0) return true;
-    return false;
-}
-
-//Toothless alwayss wins
-async function coloursquare(){
-    //Toothless wins even if user completes
-    if(checkpatternpresence(user, state)){
-        console.log("Technically X won");
-        for(i=0;i<3;i++){
-            squareindex=first3[i];
-            const sqaure = document.getElementById("square"+squareindex);
-            await delay1();
-            sqaure.classList.add("pink");
-        }
-        toothlesswins.classList.remove("d-none");
-        ttton = false;
-    }
-    //Toothless wins when he wins
-    else if(checkpatternpresence(toothless, state)){
-        for(p=0;p<3;p++){
-            squareindex=patterns[indexcolor];
-            const sqaure = document.getElementById("square"+squareindex);
-            await delay1();
-            sqaure.classList.add("pink");
-        }
-        toothlesswins.classList.remove("d-none");
-        ttton = false;
-    }
-    //Toothless wins after tie
-    else if(!checkpatternpresence && random.length===0){
-        for(i=0;i<3;i++){
-            squareindex=first3[i];
-            const sqaure = document.getElementById("square"+squareindex);
-            await delay1();
-            sqaure.classList.add("pink");
-        }
-        toothlesswins.classList.remove("d-none");
-        ttton = false;
-    }
-}
-
 //username javascript
 
 const usernamepage = document.getElementById("usernamepage");
 const myCell = document.getElementById("myCell");
+const reloaduser = document.getElementById("reloaduser");
+const usernamesub = document.getElementById("usernamesub");
+
+if(usernamesub){
+    usernamesub.addEventListener("click", ()=>{
+        validUsername(textc);
+        if(flag){
+
+        }
+        else{
+            textc = "";
+        }
+    })
+}
+
 // console.log(myCell.length);
 let textc = "";
 
@@ -223,6 +100,13 @@ if(usernamepage){
         console.log(textc);
         myCell.textContent = textc;
     });
+}
+
+if(reloaduser){
+    reloaduser.addEventListener("click", ()=>{
+        location.reload();
+        alert("Enter your username again😊");
+    })
 }
 
 function changeKeys_username(key){
@@ -276,8 +160,9 @@ const usernamesubmit = document.getElementById("usernamesubmit");
 let lettercount = 0;
 let numbercount = 0;
 let scharcount = 0;
+let flag;
 
-function validUsername(textc, flag){
+function validUsername(textc){
     if(usernamesubmit){
         for(i=0; i<16; i++){
         if(textc[i]==='0'||textc[i]==='1'){
@@ -306,4 +191,13 @@ function validUsername(textc, flag){
         }
     }
     }
+}
+
+//captcha page
+
+const captcha = document.getElementById("captcha");
+if(captcha){
+    // console.log("Captcha id works");
+    setInterval(() => alert("."), 5000);
+    setInterval(() => confetti(), 5000);
 }

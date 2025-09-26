@@ -26,6 +26,9 @@ td {
   margin-right:10%;
   margin-left:10%;
   margin-top:5%;
+  background: linear-gradient(to right, rgb(77, 255, 0), rgb(43, 43, 63), yellow, rgb(61, 252, 255), rgb(255, 0, 21), rgb(136, 33, 255), rgb(0, 0, 0));
+  font-size:100px;
+  font-family: "Font2";
 }
 
 .black{
@@ -35,6 +38,7 @@ td {
 
 .bodyttt{
   background-image: url("images/toothless3.webp");
+  background-size: cover;
 }
 
 #tttback{
@@ -59,10 +63,24 @@ td {
 
 #toothlesswins{
   font-size:100px;
+  color: #f30707;
+  font-family: "Font3";
 }
 
 #titlewf{
   font-size: 60px;
+}
+.flashy {
+  animation: flash 0.1s infinite alternate; 
+}
+
+.flashy2{
+  animation: flash 1s infinite alternate;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 /* username and captcha css */
@@ -108,4 +126,9 @@ td {
 @font-face {
   font-family: "Font2";
   src: url("fonts/BAMBOOBRUSH.otf") format("OpenType");
+}
+
+@font-face {
+  font-family: "Font3";
+  src: url("fonts/STREZY\ BREAK\ OUTLINE.otf") format("OpenType");
 }
