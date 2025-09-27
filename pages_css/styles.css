@@ -1,5 +1,6 @@
 body {
-  background-color:rgb(255, 255, 255)
+  color:aquamarine
+  /* background: linear-gradient(to right, black, black, black, #057dff, black, black, #ff00e4, black, black); */
 }
 
 button{
@@ -26,7 +27,7 @@ td {
   margin-right:10%;
   margin-left:10%;
   margin-top:5%;
-  background: linear-gradient(to right, rgb(77, 255, 0), rgb(43, 43, 63), yellow, rgb(61, 252, 255), rgb(255, 0, 21), rgb(136, 33, 255), rgb(0, 0, 0));
+  /* background: linear-gradient(to right, rgb(77, 255, 0), rgb(43, 43, 63), yellow, rgb(61, 252, 255), rgb(255, 0, 21), rgb(136, 33, 255), rgb(0, 0, 0)); */
   font-size:100px;
   font-family: "Font2";
 }
@@ -37,7 +38,7 @@ td {
 }
 
 .bodyttt{
-  background-image: url("images/toothless3.webp");
+  /* background-image: url("images/toothless3.webp"); */
   background-size: cover;
 }
 
@@ -70,13 +71,13 @@ td {
 #titlewf{
   font-size: 60px;
 }
-.flashy {
+/* .flashy {
   animation: flash 0.1s infinite alternate; 
-}
+} */
 
-.flashy2{
+/* .flashy2{
   animation: flash 1s infinite alternate;
-}
+} */
 
 @keyframes flash {
   0% { opacity: 1; }

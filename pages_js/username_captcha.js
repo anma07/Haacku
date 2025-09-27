@@ -1,80 +1,12 @@
-//most of the console logs are added to test stuff, and i dont want to take them out, cuz so much green green in between the code looks so cool in vs code
-
-//win_vs_fed js
-//to give out yes buttons in random-like ugly way
-
-const nobtn = document.getElementById("nobtn");
-const yesbutton6 = document.querySelectorAll(".col-6.d-none");
-const yesbutton1 = document.querySelectorAll(".col-1.d-none");
-const yesbutton12 = document.querySelectorAll(".col-12.d-none");
-const yesbutton3 = document.querySelectorAll(".col-3.d-none");
-const foot = document.querySelector(".foot.d-none");
-let yescount6=0;
-let yescount12=0;
-let yescount3=0;
-let yescount1=0;
-
-
-const sleep = (delayInMilliseconds) => {
-  return new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
-};
-async function delay1(){
-    await sleep(1000);
-}
-
-// console.log(yesbutton6.length);
-
-if(nobtn){
-    nobtn.addEventListener("click", ()=>{
-    // console.log("Hello, no is working");
-    if(yesbutton6.length>yescount6){
-        yesbutton6[yescount6].classList.remove("d-none");
-        yescount6++;
-    }
-    if(yesbutton12.length>yescount12){
-        yesbutton12[yescount12].classList.remove("d-none");
-        yescount12++;
-    }
-    if(yesbutton3.length>yescount3){
-        yesbutton3[yescount3].classList.remove("d-none");
-        yescount3++;
-    }
-    if(yesbutton1.length>yescount1){
-        yesbutton1[yescount1].classList.remove("d-none");
-        yescount1++;
-    }
-    if(yescount1 === 3 && yescount3 === 3 && yescount12 === 3 && yescount6 === 3){
-        // console.log("We done");
-        foot.classList.remove("d-none");
-    }
-})
-}
-
-//this will take you back to wf html with special message
-const bait1 = document.getElementById("bait1");
-const rb1 = document.querySelector(".col-11.d-none");
-console.log(rb1);
-
-if(bait1){
-    bait1.addEventListener("click", ()=>{
-    localStorage.setItem("flag", "1");
-    window.location.href="win_vs_fed.html";
-})
-}
-
-if(rb1){
-    console.log(rb1.length);
-    if (localStorage.getItem("flag") === "1") {
-    rb1.classList.remove("d-none");
-}
-}
-
 //username javascript
 
 const usernamepage = document.getElementById("usernamepage");
 const myCell = document.getElementById("myCell");
 const reloaduser = document.getElementById("reloaduser");
 const usernamesub = document.getElementById("usernamesub");
+const textarr = ['a', 'v', 'n', 'i', '*', '@', '%','&','(','0','1','o','p'];
+const checkarr = new Array(textarr.length).fill(0);
+// console.log(checkarr);
 
 if(usernamesub){
     usernamesub.addEventListener("click", ()=>{
@@ -144,12 +76,24 @@ function changeKeys_username(key){
             textc = textc + "0";
             break;
 
+        case "/":
+            textc = textc + "*";
+            break;
+
         case "Enter":
         case "Backspace":
             textc = "";
             break;
-        case "7": textc = textc + "a"; break;
+        case "1": textc = textc + "p"; break;
         case "2": textc = textc + "v"; break;
+        case "3": textc = textc + "o"; break;
+        case "4": textc = textc + "@"; break;
+        case "5": textc = textc + "0"; break;
+        case "6": 
+        case "7": textc = textc + "a"; break;
+        case "8": textc = textc + "%"; break;
+        case "9": textc = textc + "("; break;
+        case "0": textc = textc + "&"; break;
         case "ArrowUp": textc = textc + "n"; break;
         case "ArrowDown": textc = textc + "i"; break;
     }
@@ -163,17 +107,28 @@ let scharcount = 0;
 let flag;
 
 function validUsername(textc){
-    if(usernamesubmit){
+    textc=textc.slice(0,16);
+    if(textc==="avani"){
+        flag = true;
+    }
+    else{
         for(i=0; i<16; i++){
         if(textc[i]==='0'||textc[i]==='1'){
             numbercount++;
         }
-        if(textc[i]==='a'||textc[i]==='v'||textc[i]==='n'||textc[i]==='i'){
+        if(textc[i]==='a'||textc[i]==='v'||textc[i]==='n'||textc[i]==='i'||textc[i]==='p'||textc[i]==='o'){
             lettercount++;
         }
+        if(textc[i]==='*'||textc[i]==='@'||textc[i]==='('||textc[i]==='&'||textc[i]==='%'){
+            scharcount++;
+        }
+        }
+    if(textc.length<16){
+        console.log("text legth:",textc.length);
+        alert("To small");
+        flag=false;
     }
-
-    if(lettercount===0){
+    else if(lettercount===0){
         alert("Add letters to your username");
         flag = false;
     }
@@ -181,23 +136,77 @@ function validUsername(textc){
         alert("Add special characters to your username");
         flag = false;
     }
-    else{
-        if(scharcount===0){
-            flag = true;
+    else {
+        if(numbercount===0){
+            if(trouble(textc)){
+                alert("Don't put same thing more than 3 times now come on");
+            }
+            else{
+                flag = true;
+            }
         }
         else{
             alert("No nos.");
             flag = false;
+            console.log(numbercount);
         }
     }
+}
+    if(flag===true){
+        console.log("proceed");
+    }
+    else{
+        console.log("no proceed");
     }
 }
 
+if(usernamesub){
+    usernamesub.addEventListener("click", ()=>{
+        console.log("main submit was pressed");
+        validUsername(textc);
+    })
+}
+
+function trouble(textc){
+    console.log("trouble was called");
+    for(i=0; i<16; i++){
+        let index = textarr.findIndex(element => element===textc[i]);
+        checkarr[index]++;
+    }
+    for(i=0; i<textarr.length; i++){
+        if(checkarr[i]>3){
+            return true;
+        }
+    }
+    return false;
+}
+
+
 //captcha page
+
+const captchasub = document.getElementById("captchasub");
 
 const captcha = document.getElementById("captcha");
 if(captcha){
     // console.log("Captcha id works");
-    setInterval(() => alert("."), 5000);
-    setInterval(() => confetti(), 5000);
+    // setInterval(() => alert("."), 5000);
+}
+
+let flag2 = false;
+let captchastr = "a%&pov";
+
+function checkcaptcha(textc){
+    if(captchastr===textc){
+        console.log("congrats ts working");
+        flag2 = true;
+    }
+    else{
+
+    }
+}
+
+if(captchasub){
+    captchasub.addEventListener("click", ()=>{
+        checkcaptcha(textc);
+    });
 }
