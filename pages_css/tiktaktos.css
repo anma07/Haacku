@@ -1,0 +1,101 @@
+/* Hackathon Worst UI Theme */
+
+/* General Page */
+.bodyttt {
+    background-color: #ff00ff; /* neon magenta */
+    color: #00ff00; /* neon green */
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: left; /* bad alignment */
+    padding: 50px 5px 0 40px; /* awkward padding */
+}
+
+/* Title */
+#declare {
+    font-size: 4rem;
+    color: yellow;
+    background: cyan;
+    border: 5px dotted red;
+    text-transform: lowercase; /* inconsistent */
+    text-align: right; /* off-center */
+    margin: 0 0 5px 0;
+}
+
+/* Flashy class makes it worse */
+.flashy {
+    letter-spacing: -5px; /* cramped */
+    word-spacing: 20px;   /* too wide */
+    text-decoration: underline overline line-through;
+}
+
+/* "Toothless wins" */
+#toothlesswins {
+    font-size: 0.7rem; /* tiny */
+    color: purple;
+    background: lime;
+    border: 3px solid orange;
+    display: block;
+    margin: 2px auto;
+    padding: 2px;
+}
+
+/* Game board */
+table {
+    margin: 10px auto;
+    border-collapse: separate;
+    border-spacing: 15px; /* gaps everywhere */
+    border: 6px double blue;
+    background: yellow;
+}
+
+/* Squares */
+.square {
+    width: 80px;
+    height: 120px; /* stretched */
+    border: 7px groove pink;
+    text-align: left; /* misaligned */
+    vertical-align: bottom;
+    font-size: 3rem; /* too big */
+    font-weight: lighter;
+    color: red;
+    background: orange;
+    cursor: crosshair; /* confusing cursor */
+}
+
+/* Status */
+#status {
+    margin-top: 5px;
+    font-size: 2.2rem;
+    font-style: italic;
+    color: cyan;
+    background: black;
+    border: 4px dashed magenta;
+    width: 60%;
+}
+
+/* Winning code */
+.winningcode {
+    font-size: 0.9rem; /* way too small */
+    color: brown;
+    background: pink;
+    margin-top: -10px;
+    letter-spacing: 10px; /* unreadable */
+}
+
+/* Button */
+#playagain {
+    margin-top: 30px;
+    background-color: red;
+    color: white;
+    border: 8px inset lime;
+    font-size: 2.5rem; /* oversized */
+    padding: 3px 60px;
+    border-radius: 0; /* sharp edges */
+    text-transform: uppercase;
+}
+
+#playagain:hover {
+    background-color: blue;
+    color: yellow;
+    border: 8px dotted cyan;
+}
+

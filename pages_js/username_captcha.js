@@ -5,20 +5,19 @@ const myCell = document.getElementById("myCell");
 const reloaduser = document.getElementById("reloaduser");
 const usernamesub = document.getElementById("usernamesub");
 const textarr = ['a', 'v', 'n', 'i', '*', '@', '%','&','(','0','1','o','p'];
-const checkarr = new Array(textarr.length).fill(0);
 // console.log(checkarr);
 
-if(usernamesub){
-    usernamesub.addEventListener("click", ()=>{
-        validUsername(textc);
-        if(flag){
+// if(usernamesub){
+//     usernamesub.addEventListener("click", ()=>{
+//         validUsername(textc);
+//         if(flag){
 
-        }
-        else{
-            textc = "";
-        }
-    })
-}
+//         }
+//         else{
+//             textc = "";
+//         }
+//     })
+// }
 
 // console.log(myCell.length);
 let textc = "";
@@ -112,7 +111,10 @@ function validUsername(textc){
         flag = true;
     }
     else{
-        for(i=0; i<16; i++){
+        let lettercount = 0;
+        let numbercount = 0;
+        let scharcount = 0;
+        for(i=0; i<textc.length; i++){
         if(textc[i]==='0'||textc[i]==='1'){
             numbercount++;
         }
@@ -154,6 +156,7 @@ function validUsername(textc){
 }
     if(flag===true){
         console.log("proceed");
+        window.location.href = "../pages_html/captcha.html";
     }
     else{
         console.log("no proceed");
@@ -168,6 +171,7 @@ if(usernamesub){
 }
 
 function trouble(textc){
+    const checkarr = new Array(textarr.length).fill(0);
     console.log("trouble was called");
     for(i=0; i<16; i++){
         let index = textarr.findIndex(element => element===textc[i]);
@@ -175,9 +179,11 @@ function trouble(textc){
     }
     for(i=0; i<textarr.length; i++){
         if(checkarr[i]>3){
+            console.log(checkarr);
             return true;
         }
     }
+    console.log(checkarr);
     return false;
 }
 
@@ -189,7 +195,7 @@ const captchasub = document.getElementById("captchasub");
 const captcha = document.getElementById("captcha");
 if(captcha){
     // console.log("Captcha id works");
-    // setInterval(() => alert("."), 5000);
+    setInterval(() => alert("."), 5000);
 }
 
 let flag2 = false;

@@ -15,7 +15,7 @@ table {
 td {
   width: 100px;
   height: 100px;
-  border: 2px solid #f30707;
+  border: 4px solid grey;
   text-align: center;
   vertical-align: middle;
   font-size: 50px;
@@ -121,15 +121,26 @@ td {
 
 @font-face {
   font-family: "Font1";
-  src: url("fonts/Molahesta.otf") format("OpenType");
+  src: url("../fonts/Molahesta.otf") format("OpenType");
 }
 
 @font-face {
   font-family: "Font2";
-  src: url("fonts/BAMBOOBRUSH.otf") format("OpenType");
+  src: url("../fonts/BAMBOOBRUSH.otf") format("OpenType");
 }
 
 @font-face {
   font-family: "Font3";
-  src: url("fonts/STREZY\ BREAK\ OUTLINE.otf") format("OpenType");
+  src: url("../fonts/STREZY\ BREAK\ OUTLINE.otf BREAK\ OUTLINE.otf BREAK\ OUTLINE.otf") format("OpenType");
+}
+
+/* index page */
+canvas {
+  position: absolute;
+  top: 0px; left: 0px;
+}
+
+#nextpagebutton{
+  position: absolute;
+  top: 20px; left: 20px;
 }

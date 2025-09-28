@@ -7,6 +7,12 @@ const square = document.querySelectorAll(".square");
 const status = document.getElementById("status");
 const toothlesswins = document.getElementById("toothlesswins");
 const playagain = document.getElementById("playagain");
+// const winningcode = document.getElementsByClassName("winningcode");
+
+const winningcode=[];
+for(i=0; i<3; i++){
+    winningcode[0] = document.getElementById("winningcode"+i);
+}
 
 let state = ["", "", "", "", "", "", "", "", ""];
 let random = ["0","1", "2", "3", "4", "5", "6", "7", "8"];
@@ -143,6 +149,7 @@ async function coloursquare(){
         ttton = false;
         count++;
         localStorage.setItem("count", count);
+        addwinningcode(first3);
     }
     //Toothless wins when he wins
     else if(checkpatternpresence("O", state)){
@@ -159,6 +166,7 @@ async function coloursquare(){
         ttton = false;
         count++;
         localStorage.setItem("count", count);
+        addwinningcode(patterns[indexcolor]);
     }
     //Toothless wins after tie
     else if(random.length===0){
@@ -174,6 +182,7 @@ async function coloursquare(){
         ttton = false;
         count++;
         localStorage.setItem("count", count);
+        addwinningcode(first3);
     }
 }
 
@@ -188,3 +197,10 @@ function confetti(){
 window.addEventListener("load", (event) => {
   new cursoreffects.emojiCursor({ emoji: ["🔥", "💩"] });
 });
+
+function addwinningcode(n){
+    for(i = 0; i<3; i++){
+        winningcode[0].textcontent = n[0];
+    }
+    console.log(winningcode);
+}
