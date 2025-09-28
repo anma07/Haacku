@@ -55,6 +55,28 @@ const imagebox1Options = {
   }
 }
 
+const genericBoxOptions = {
+    friction: 0.5,
+    restitution: 0.7, 
+    render: {
+        fillStyle: '#3498db', 
+        strokeStyle: '#2c3e50', 
+        lineWidth: 2
+    }
+};
+
+const objectsToAdd = [];
+
+for (let i = 0; i < 20; i++) {
+    objectsToAdd.push(Bodies.rectangle(
+        Math.random() * w, 
+        Math.random() * h, 
+        Math.random() * 60 + 30, 
+        Math.random() * 60 + 30, 
+        genericBoxOptions
+    ));
+}
+
 // var box0 = Bodies.rectangle(x - 100, y - 100, 80, 80, boxOptions);
 var upperbox1 = Bodies.rectangle(w/2, 40, 200, 120, upperboxOptions);
 var upperbox2 = Bodies.rectangle(w/2+200, 40, 200, 120, upperboxOptions);
@@ -66,16 +88,16 @@ var upperbox7 = Bodies.rectangle(w/2-400, 40, 200, 120, upperboxOptions);
 var upperbox8 = Bodies.rectangle(w/2-600, 40, 200, 120, upperboxOptions);
 var upperbox9 = Bodies.rectangle(w/2-800, 40, 200, 120, upperboxOptions);
 
-const Image = new Image();
-Image.src = '../images/toothless2.jpg';
-var imagebox1 = Bodies.rectangle(w/2, h/2, Image.width, Image.height, imagebox1Options);
+// const Image = new Image();
+// Image.src = '../images/toothless2.jpg';
+// var imagebox1 = Bodies.rectangle(w/2, h/2, Image.width, Image.height, imagebox1Options);
 
 var border1 = Bodies.rectangle(w/2, h, w, 20, borderOptions);
 var border2 = Bodies.rectangle(w/2, 0, w, 20, borderOptions);
 var border3 = Bodies.rectangle(0, h/2, 20, h, borderOptions);
 var border4 = Bodies.rectangle(w, h/2, 20, h, borderOptions);
 
-Composite.add(engine.world, [upperbox1, upperbox2, upperbox3, upperbox4, upperbox5, upperbox6, upperbox7, upperbox8, upperbox9, border1, border2, border3, border4, imagebox1]);
+Composite.add(engine.world, [upperbox1, upperbox2, upperbox3, upperbox4, upperbox5, upperbox6, upperbox7, upperbox8, upperbox9, border1, border2, border3, border4, ...objectsToAdd]);
 
 const mouse = Mouse.create(render.canvas);
 const mouseConstraint = MouseConstraint.create(engine, {
@@ -90,6 +112,6 @@ render.mouse = mouse;
 Render.run(render);
 
 var runner = Runner.create();
-// Runner.run(runner, engine);
+Runner.run(runner, engine);
 
 console.log("Stop Working");
