@@ -18,8 +18,8 @@ let state = ["", "", "", "", "", "", "", "", ""];
 let random = ["0","1", "2", "3", "4", "5", "6", "7", "8"];
 let first3 = ["", "", "", ""];
 let ttton = true;
-let user = "X";
-let toothless = "O";
+let user = "🪱";
+let toothless = "🐈‍⬛";
 let countttt = 0;
 const patterns = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
 let indexcolor = "";
@@ -35,7 +35,7 @@ function handleMove(index){
     if(state[index]==="" && ttton){
         state[index] = user;
         console.log(index);
-        document.querySelector(`[data-index="${index}"]`).textContent = "X";
+        document.querySelector(`[data-index="${index}"]`).textContent = "🪱";
         const p = random.indexOf(index);
         random.splice(p,1);
         console.log("random: ",random);
@@ -67,7 +67,7 @@ playagain.addEventListener("click", ()=>{
 function toothlessplay(){
     let tindex = Math.floor(Math.random() *random.length);
     let q = random[tindex];
-    state[q] = "O";
+    state[q] = "🐈‍⬛";
     console.log(q);
     square[q].textContent = toothless;
     const p = random.indexOf(q);
@@ -136,7 +136,7 @@ console.log(toothlesswin);
 //Toothless alwayss wins
 async function coloursquare(){
     // Toothless wins even if user completes
-    if(checkpatternpresence("X", state)){
+    if(checkpatternpresence("🪱", state)){
         console.log("Technically X won");
         for(i=0;i<3;i++){
             squareindex=first3[i];
@@ -145,14 +145,14 @@ async function coloursquare(){
             sqaure.classList.add("pink");
         }
         toothlesswins.classList.remove("d-none");
-        confetti();
+        bigconfetti();
         ttton = false;
         count++;
         localStorage.setItem("count", count);
         addwinningcode(first3);
     }
     //Toothless wins when he wins
-    else if(checkpatternpresence("O", state)){
+    else if(checkpatternpresence("🐈‍⬛", state)){
         console.log("Toothless won");
         console.log(indexcolor);
         for(p=0;p<3;p++){
@@ -162,7 +162,7 @@ async function coloursquare(){
             sqaure.classList.add("pink");
         }
         toothlesswins.classList.remove("d-none");
-        confetti();
+        bigconfetti();
         ttton = false;
         count++;
         localStorage.setItem("count", count);
@@ -178,7 +178,7 @@ async function coloursquare(){
             sqaure.classList.add("pink");
         }
         toothlesswins.classList.remove("d-none");
-        confetti();
+        bigconfetti();
         ttton = false;
         count++;
         localStorage.setItem("count", count);
@@ -186,12 +186,25 @@ async function coloursquare(){
     }
 }
 
-function confetti(){
+function bigconfetti(){
     confetti({
-        particleCount : 200,
-        spread : 150,
-        origin: { y: 0.6 }
-    });
+    particleCount: 2000,
+    spread: 500,
+    origin: { y: 0.6 },
+    scalar: 3
+});
+confetti({
+    particleCount: 2000,
+    spread: 500,
+    origin: {x: 0.6, y:0.6},
+    scalar: 4 
+})
+confetti({
+    particleCount: 2000,
+    spread: 500,
+    origin: {x: -0.6, y:0.6},
+    scalar: 4
+})
 }
 
 window.addEventListener("load", (event) => {

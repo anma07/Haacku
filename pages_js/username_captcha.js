@@ -83,16 +83,19 @@ function changeKeys_username(key){
         case "Backspace":
             textc = "";
             break;
-        case "1": textc = textc + "p"; break;
+        case "1": textc = textc + "1"; break;
         case "2": textc = textc + "v"; break;
         case "3": textc = textc + "o"; break;
         case "4": textc = textc + "@"; break;
         case "5": textc = textc + "0"; break;
         case "6": 
         case "7": textc = textc + "a"; break;
-        case "8": textc = textc + "%"; break;
+        case "8": textc = textc + "1"; break;
         case "9": textc = textc + "("; break;
         case "0": textc = textc + "&"; break;
+        case "-": textc = textc + "0"; break;
+        case "{": textc = textc + "m"; break;
+        case "<": textc = textc + "p"; break;
         case "ArrowUp": textc = textc + "n"; break;
         case "ArrowDown": textc = textc + "i"; break;
     }
@@ -141,7 +144,7 @@ function validUsername(textc){
     else {
         if(numbercount===0){
             if(trouble(textc)){
-                alert("Don't put same thing more than 3 times now come on");
+                alert("Don't put same thing more than 1 time now come on");
             }
             else{
                 flag = true;
@@ -178,7 +181,7 @@ function trouble(textc){
         checkarr[index]++;
     }
     for(i=0; i<textarr.length; i++){
-        if(checkarr[i]>3){
+        if(checkarr[i]>1){
             console.log(checkarr);
             return true;
         }

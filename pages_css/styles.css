@@ -1,6 +1,6 @@
 body {
-  color:aquamarine
-  /* background: linear-gradient(to right, black, black, black, #057dff, black, black, #ff00e4, black, black); */
+  color:red;
+  background: linear-gradient(to right, yellow, brown, yellow, brown, yellow, brown, yellow)
 }
 
 button{
@@ -9,9 +9,26 @@ button{
 }
 
 table {
-  margin: 20px auto;
-  border-collapse: collapse;
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 350px; /* Reduced to fit screen */
+    transform: rotate(5deg); 
+    background-color: #333333; 
+    border-spacing: 5px;
+    box-shadow: 15px 15px 0 0 #ff00ff; 
 }
+
+.square {
+    width: 100px; 
+    height: 100px;
+    border: 10px solid #0000ff;
+    text-align: center;
+    line-height: 100px; 
+    font-size: 75px; 
+    color: #000000; 
+    background-color: #ffffff; 
+}
+
 td {
   width: 100px;
   height: 100px;
@@ -62,10 +79,12 @@ td {
   background-color:greenyellow
 }
 
-#toothlesswins{
-  font-size:100px;
-  color: #f30707;
-  font-family: "Font3";
+#toothlesswins {
+    font-size: 150px;
+    color: #0000ff; 
+    text-align: center;
+    font-weight: 2000;
+    font-family: 'Font3';
 }
 
 #titlewf{
@@ -131,7 +150,7 @@ td {
 
 @font-face {
   font-family: "Font3";
-  src: url("../fonts/STREZY\ BREAK\ OUTLINE.otf BREAK\ OUTLINE.otf BREAK\ OUTLINE.otf") format("OpenType");
+  src: url("../fonts/STREZY\ BREAK\ REGULAR.otf") format("OpenType");
 }
 
 /* index page */
