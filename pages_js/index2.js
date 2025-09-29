@@ -116,7 +116,7 @@ var challengeword = createtxt(500, h/2, "chaLlnge", 150, 50);
 
 var youword = createtxt(70, h/2+150, "yoU", 80, 50);
 var forword = createtxt2(200, h/2+150, "fOr", 80, 50);
-var tttword = createtxt2(400, h/2+200, "tIctAktOs", 400, 60);
+var tttword = createtxt2(400, h/2+200, "tIctAktOE", 400, 60);
 
 var border1 = Bodies.rectangle(w/2, h, w, 20, borderOptions);
 var border2 = Bodies.rectangle(w/2, 0, w, 20, borderOptions);
