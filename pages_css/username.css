@@ -20,14 +20,14 @@
 
 #tableh3 {
     color: #ff0000;
-    font-size: 80px;
+    font-size: 150px;
     text-shadow: 2px 2px 0 #ffff00;
     font-family:'Font1'; 
 }
 
 #tableh5 {
     color: #0000ff; 
-    font-size: 10px;
+    font-size: 30px;
     text-decoration: line-through; 
     font-family: 'Font2';
 }
@@ -40,9 +40,9 @@
     text-align: right; 
     margin-left: 50px;
     padding: 10px;
-    font-size: 24px;
+    font-size: 50px;
     color: #ff00ff;
-    font-family: 'Font2';
+    font-family: 'Font3';
 }
 
 #usernamesub {
@@ -52,8 +52,8 @@
 
     font-size: 1px; 
     padding: 1px; 
-    width: 5px;
-    height: 5px; 
+    width: 8px;
+    height: 8px; 
     
     background-color: #000000; 
     color: #00ff00; 
