@@ -1,10 +1,21 @@
 console.log("Start working");
 
-const nextpage = document.getElementById("nextpagebutton");
+const nextpagebutton = document.getElementById("nextpagebutton");
+const freefall = document.getElementById("freefall");
 
-if(nextpage){
-  nextpage.addEventListener("click", ()=>{
+if(freefall){
+  freefall.addEventListener("click", ()=>{
+    engine.world.gravity.x = -1;
+    Runner.run(runner, engine);
+    nextpagebutton.classList.remove("d-none");
+    freefall.classList.add("d-none");
+  })
+}
+
+if(nextpagebutton){
+  nextpagebutton.addEventListener("click", ()=>{
     window.location.href = "../pages_html/username.html";
+    console.log("Next page button was pressed");
   })
 }
 
@@ -29,42 +40,10 @@ var render = Render.create({
         width: w,
         height: h,
         wireframes: false,
-        background: '#f5f5f5',
+        background:'#bca89f',
         showVelocity: true
       }
 });
-
-// const createtxt = (x, y, textContent, boxWidth, boxHeight) => {
-//     const fontSize = 32;
-//     return Bodies.rectangle(x, y, boxWidth, boxHeight, {
-//         friction: 0.8,
-//         restitution: 0.3,
-//         density: 0.005,
-//         render: {
-//             sprite: {
-//                 texture: `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="${boxWidth}" height="${boxHeight}"><rect x="0" y="0" width="${boxWidth}" height="${boxHeight}" fill="%23ffd700" stroke="%23dc3545" stroke-width="3" rx="5"/><text x="${boxWidth/2}" y="${boxHeight/2 + fontSize/3}" font-family="Arial" font-size="${fontSize}" fill="%23000000" text-anchor="middle">${encodeURIComponent(textContent)}</text></svg>`,
-//                 xScale: 1,
-//                 yScale: 1
-//             }
-//         }
-//     });
-// };
-
-// const createtxt2 = (x, y, textContent, boxWidth, boxHeight) => {
-//     const fontSize = 32;
-//     return Bodies.rectangle(x, y, boxWidth, boxHeight, {
-//         friction: 0.8,
-//         restitution: 0.3,
-//         density: 0.005,
-//         render: {
-//             sprite: {
-//                 texture: `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="${boxWidth}" height="${boxHeight}"><rect x="0" y="0" width="${boxWidth}" height="${boxHeight}" fill="#00ff00" stroke="#ff00ff" stroke-width="3" rx="5"/><text x="${boxWidth/2}" y="${boxHeight/2 + fontSize/3}" font-family="Arial" font-size="${fontSize}" fill="%23000000" text-anchor="middle">${encodeURIComponent(textContent)}</text></svg>`,
-//                 xScale: 1,
-//                 yScale: 1
-//             }
-//         }
-//     });
-// };
 
 const createtxt = (x, y, textContent, boxWidth, boxHeight) => {
     const fontSize = 32;
@@ -73,11 +52,14 @@ const createtxt = (x, y, textContent, boxWidth, boxHeight) => {
         <rect x="0" y="0" width="${boxWidth}" height="${boxHeight}" 
               fill="%23ffd700" stroke="%23dc3545" stroke-width="3" rx="5"/>
         <text x="${boxWidth/2}" y="${boxHeight/2 + fontSize/3}" 
-              font-family="Arial" font-size="${fontSize}" fill="%23000000" 
+              font-family="Impact" font-size="${fontSize}" fill="%23000000" 
               text-anchor="middle">${textContent}</text>
       </svg>`;
     return Bodies.rectangle(x, y, boxWidth, boxHeight, {
         render: {
+          friction: 0.5,
+          restitution: 0.5,
+          density: 0.005,
             sprite: {
                 texture: `data:image/svg+xml;utf8,${svg}`,
                 xScale: 1,
@@ -99,6 +81,9 @@ const createtxt2 = (x, y, textContent, boxWidth, boxHeight) => {
       </svg>`;
     return Bodies.rectangle(x, y, boxWidth, boxHeight, {
         render: {
+          friction: 0.5,
+          restitution: 0.5,
+          density: 0.005,
             sprite: {
                 texture: `data:image/svg+xml;utf8,${svg}`,
                 xScale: 1,
@@ -138,8 +123,21 @@ var border2 = Bodies.rectangle(w/2, 0, w, 20, borderOptions);
 var border3 = Bodies.rectangle(0, h/2, 20, h, borderOptions);
 var border4 = Bodies.rectangle(w, h/2, 20, h, borderOptions);
 
-var imagebox1 = Bodies.rectangle(w/2, h/2, 1000, 1000, imagebox1Options);
-var imagebox2 = Bodies.rectangle(w/2+500, h/2+150, 1000, 1000, imagebox2Options);
+var imagebox1 = Bodies.rectangle(w/2, h/2, 500, 500, {
+    isStatic: false,
+    friction: 0.8,
+    restitution: 0.5,
+    density: 0.005,
+    render: imagebox1Options.render
+});
+
+var imagebox2 = Bodies.rectangle(w/2 + 500, h/2 + 150, 500, 500, {
+    isStatic: false,
+    friction: 0.5,
+    restitution: 0.5,
+    density: 0.005,
+    render: imagebox2Options.render
+});
 
 const mouse = Mouse.create(render.canvas);
 const mouseConstraint = MouseConstraint.create(engine, {
@@ -149,11 +147,11 @@ const mouseConstraint = MouseConstraint.create(engine, {
 Composite.add(world, mouseConstraint);
 render.mouse = mouse;
 
-Composite.add(engine.world, [imagebox1, imagebox2, border1, border2, border3, border4, thisword, isword, toothlessword, toothlesswordy, challenge, toword, youword, forword, tttword, halloword])
+Composite.add(engine.world, [imagebox1, imagebox2, border1, border2, border3, border4, thisword, isword, toothlessword, toothlesswordy, challenge, challengeword, toword, youword, forword, tttword, halloword])
 
 Render.run(render);
 
 var runner = Runner.create();
-Runner.run(runner, engine);
+// Runner.run(runner, engine);
 
 console.log("Stop Working");

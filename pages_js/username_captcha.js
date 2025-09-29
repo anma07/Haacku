@@ -7,26 +7,14 @@ const usernamesub = document.getElementById("usernamesub");
 const textarr = ['a', 'v', 'n', 'i', '*', '@', '%','&','(','0','1','o','p'];
 // console.log(checkarr);
 
-// if(usernamesub){
-//     usernamesub.addEventListener("click", ()=>{
-//         validUsername(textc);
-//         if(flag){
-
-//         }
-//         else{
-//             textc = "";
-//         }
-//     })
-// }
-
 // console.log(myCell.length);
 let textc = "";
 
 if(usernamepage){
     document.addEventListener('keydown',function(event){
         changeKeys_username(event.key);
-        if(textc.length>16){
-            textc=textc.slice(0,16);
+        if(textc.length>13){
+            textc=textc.slice(0,13);
         }
         console.log(textc);
         myCell.textContent = textc;
@@ -75,29 +63,36 @@ function changeKeys_username(key){
             textc = textc + "0";
             break;
 
-        case "/":
-            textc = textc + "*";
-            break;
-
         case "Enter":
         case "Backspace":
             textc = "";
             break;
         case "1": textc = textc + "1"; break;
-        case "2": textc = textc + "v"; break;
-        case "3": textc = textc + "o"; break;
-        case "4": textc = textc + "@"; break;
+        case "`": textc = textc + "e"; break;
+        case "2": textc = textc + "v"; break; //1
+        case "3": textc = textc + "o"; break; //2
+        case "4": textc = textc + "@"; break; //3
         case "5": textc = textc + "0"; break;
         case "6": 
-        case "7": textc = textc + "a"; break;
-        case "8": textc = textc + "1"; break;
-        case "9": textc = textc + "("; break;
-        case "0": textc = textc + "&"; break;
-        case "-": textc = textc + "0"; break;
-        case "{": textc = textc + "m"; break;
-        case "<": textc = textc + "p"; break;
-        case "ArrowUp": textc = textc + "n"; break;
-        case "ArrowDown": textc = textc + "i"; break;
+        case "7": textc = textc + "a"; break; //4
+        case "8": textc = textc + "haha"; break; 
+        case "9": textc = textc + "("; break; //5
+        case "0": textc = textc + "&"; break; //6
+        case "-": textc = textc + "uuh"; break;
+        case "[": textc = textc + "m"; break; //7
+        case ",": textc = textc + "0"; break; 
+        case "Tab": textc = textc + "p"; break; //8
+        case "]": textc = textc + "l"; break; //9
+        case "=": textc = textc + "hello"; break;
+        case ";": textc = textc + "h"; break; //10
+        case ".": textc = textc + "t"; break; //11
+        case "/": textc = textc + "llong"; break; 
+        case "Control": textc = textc + "$"; break; //12
+        case "ArrowUp": textc = textc + "n"; break; //13
+        case "ArrowDown": textc = textc + "i"; break; //14
+        case "ArrowLeft": textc = textc + "0"; break;
+        case "ArrowRight": textc = textc + "1"; break;
+        case "Shift": textc = textc + "%"; break; //15
     }
 }
 
@@ -107,30 +102,39 @@ let lettercount = 0;
 let numbercount = 0;
 let scharcount = 0;
 let flag;
+let flag27;
 
 function validUsername(textc){
-    textc=textc.slice(0,16);
+    textc=textc.slice(0,13);
     if(textc==="avani"){
         flag = true;
+        flag27 = true;
     }
     else{
         let lettercount = 0;
         let numbercount = 0;
         let scharcount = 0;
+        let ecount = 0;
         for(i=0; i<textc.length; i++){
         if(textc[i]==='0'||textc[i]==='1'){
             numbercount++;
         }
-        if(textc[i]==='a'||textc[i]==='v'||textc[i]==='n'||textc[i]==='i'||textc[i]==='p'||textc[i]==='o'){
+        if(textc[i]==='a'||textc[i]==='v'||textc[i]==='n'||textc[i]==='i'||textc[i]==='p'||textc[i]==='o'||textc[i]==='m'||textc[i]==='l'||textc[i]==='h'||textc[i]==='t'){
             lettercount++;
         }
-        if(textc[i]==='*'||textc[i]==='@'||textc[i]==='('||textc[i]==='&'||textc[i]==='%'){
+        if(textc[i]==='$'||textc[i]==='@'||textc[i]==='('||textc[i]==='&'||textc[i]==='%'){
             scharcount++;
         }
+        if(textc[i]==='e'){
+            ecount++;
+            // alert("Toothless doesnt like eels, which start from e, so skip it");
+            // flag = false;
+            // textc = "";
         }
-    if(textc.length<16){
+        }
+    if(textc.length<13){
         console.log("text legth:",textc.length);
-        alert("To small");
+        alert("Username too small");
         flag=false;
     }
     else if(lettercount===0){
@@ -139,6 +143,10 @@ function validUsername(textc){
     }
     else if(scharcount===0){
         alert("Add special characters to your username");
+        flag = false;
+    }
+    else if(ecount>0){
+        alert("Toothless doesnt like eels, which start from e, so skip it");
         flag = false;
     }
     else {
@@ -157,9 +165,17 @@ function validUsername(textc){
         }
     }
 }
-    if(flag===true){
-        console.log("proceed");
-        window.location.href = "../pages_html/captcha.html";
+    if(flag){
+        if(flag27){
+            console.log("proceed");
+            alert("cool username");
+            window.location.href = "../pages_html/captcha.html";
+        }
+        else{
+            console.log("proceed");
+            alert("ugly username, nvm we dont't need one");
+            window.location.href = "../pages_html/captcha.html";
+        }
     }
     else{
         console.log("no proceed");
@@ -176,7 +192,7 @@ if(usernamesub){
 function trouble(textc){
     const checkarr = new Array(textarr.length).fill(0);
     console.log("trouble was called");
-    for(i=0; i<16; i++){
+    for(i=0; i<13; i++){
         let index = textarr.findIndex(element => element===textc[i]);
         checkarr[index]++;
     }
@@ -191,7 +207,7 @@ function trouble(textc){
 }
 
 
-//captcha page
+//captcha javascript
 
 const captchasub = document.getElementById("captchasub");
 
@@ -202,7 +218,7 @@ if(captcha){
 }
 
 let flag2 = false;
-let captchastr = "a%&pov";
+let captchastr = "&hv1om0(";
 
 function checkcaptcha(textc){
     if(captchastr===textc){
@@ -210,12 +226,15 @@ function checkcaptcha(textc){
         flag2 = true;
     }
     else{
-
+        alert("Its just few characters now comeon");
     }
 }
 
 if(captchasub){
     captchasub.addEventListener("click", ()=>{
         checkcaptcha(textc);
+        if(flag2){
+            window.location.href = "../pages_html/tiktaktos.html";
+        }
     });
 }
