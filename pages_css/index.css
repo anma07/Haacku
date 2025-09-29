@@ -1,0 +1,35 @@
+canvas{
+    position:absolute;
+}
+
+#buttons{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+#freefall{
+    position: absolute; 
+    top: 100px; 
+    right: 70px; 
+    z-index: 110; 
+    pointer-events: all; 
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #ff00ff;
+    color: #ff2727;
+}
+
+#nextpagebutton{
+    position: absolute;
+    height:20px;
+    width:20px;
+    z-index: 110;
+    bottom: 200px;
+    right: 500px;
+    pointer-events: all;
+}

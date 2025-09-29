@@ -7,6 +7,7 @@ const square = document.querySelectorAll(".square");
 const status = document.getElementById("status");
 const toothlesswins = document.getElementById("toothlesswins");
 const playagain = document.getElementById("playagain");
+const giveup = document.getElementById("giveup");
 // const winningcode = document.getElementsByClassName("winningcode");
 
 const winningcode=[];
@@ -18,13 +19,29 @@ let state = ["", "", "", "", "", "", "", "", ""];
 let random = ["0","1", "2", "3", "4", "5", "6", "7", "8"];
 let first3 = ["", "", "", ""];
 let ttton = true;
-let user = "🪱";
-let toothless = "🐈‍⬛";
+let user = "X";
+let toothless = "O";
 let countttt = 0;
 const patterns = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
 let indexcolor = "";
-let count = localStorage.getItem("count");
-count = count ? parseInt(count, 10) : 0;
+
+if (!sessionStorage.getItem("gameSessionActive")) {
+  localStorage.setItem("count", "0");
+  sessionStorage.setItem("gameSessionActive", "true");
+}
+
+let count = parseInt(localStorage.getItem("count"), 10);
+
+if(giveup){
+    console.log("Giveup button exists");
+    if(count>=5){
+        giveup.classList.remove("d-none");
+    }
+    giveup.addEventListener("click", ()=>{
+        window.location.href = "../pages_html/bye.html";
+    })
+}
+
 // console.log(square.length); i wrote sqaure somewhere and was trying to figure out what was wrong for half hr, this saved me
 
 function click(e){
@@ -35,7 +52,7 @@ function handleMove(index){
     if(state[index]==="" && ttton){
         state[index] = user;
         console.log(index);
-        document.querySelector(`[data-index="${index}"]`).textContent = "🪱";
+        document.querySelector(`[data-index="${index}"]`).textContent = "X";
         const p = random.indexOf(index);
         random.splice(p,1);
         console.log("random: ",random);
@@ -60,6 +77,8 @@ function handleMove(index){
 if(playagain){
 playagain.addEventListener("click", ()=>{
     location.reload();
+    count++;
+    localStorage.setItem("count", count);
 });
 }
 
@@ -67,7 +86,7 @@ playagain.addEventListener("click", ()=>{
 function toothlessplay(){
     let tindex = Math.floor(Math.random() *random.length);
     let q = random[tindex];
-    state[q] = "🐈‍⬛";
+    state[q] = "O";
     console.log(q);
     square[q].textContent = toothless;
     const p = random.indexOf(q);
@@ -136,7 +155,7 @@ console.log(toothlesswin);
 //Toothless alwayss wins
 async function coloursquare(){
     // Toothless wins even if user completes
-    if(checkpatternpresence("🪱", state)){
+    if(checkpatternpresence("X", state)){
         console.log("Technically X won");
         for(i=0;i<3;i++){
             squareindex=first3[i];
@@ -147,12 +166,9 @@ async function coloursquare(){
         toothlesswins.classList.remove("d-none");
         bigconfetti();
         ttton = false;
-        count++;
-        localStorage.setItem("count", count);
-        addwinningcode(first3);
     }
     //Toothless wins when he wins
-    else if(checkpatternpresence("🐈‍⬛", state)){
+    else if(checkpatternpresence("O", state)){
         console.log("Toothless won");
         console.log(indexcolor);
         for(p=0;p<3;p++){
@@ -164,9 +180,6 @@ async function coloursquare(){
         toothlesswins.classList.remove("d-none");
         bigconfetti();
         ttton = false;
-        count++;
-        localStorage.setItem("count", count);
-        addwinningcode(patterns[indexcolor]);
     }
     //Toothless wins after tie
     else if(random.length===0){
@@ -180,40 +193,21 @@ async function coloursquare(){
         toothlesswins.classList.remove("d-none");
         bigconfetti();
         ttton = false;
-        count++;
-        localStorage.setItem("count", count);
-        addwinningcode(first3);
     }
 }
 
 function bigconfetti(){
     confetti({
-    particleCount: 2000,
-    spread: 500,
-    origin: { y: 0.6 },
-    scalar: 3
-});
-confetti({
-    particleCount: 2000,
-    spread: 500,
-    origin: {x: 0.6, y:0.6},
-    scalar: 4 
-})
-confetti({
-    particleCount: 2000,
-    spread: 500,
-    origin: {x: -0.6, y:0.6},
-    scalar: 4
-})
+        particleCount: 2000,
+        spread: 500,
+        origin: { y: 0.6 },
+        scalar: 1.5
+    });
 }
 
 window.addEventListener("load", (event) => {
-  new cursoreffects.emojiCursor({ emoji: ["🔥", "💩"] });
+    new cursoreffects.emojiCursor({
+         emoji: ["🔥", "💩"],
+         scalar: 3
+        });
 });
-
-function addwinningcode(n){
-    for(i = 0; i<3; i++){
-        winningcode[0].textcontent = n[0];
-    }
-    console.log(winningcode);
-}
