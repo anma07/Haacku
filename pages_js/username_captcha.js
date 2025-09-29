@@ -4,7 +4,7 @@ const usernamepage = document.getElementById("usernamepage");
 const myCell = document.getElementById("myCell");
 const reloaduser = document.getElementById("reloaduser");
 const usernamesub = document.getElementById("usernamesub");
-const textarr = ['a', 'v', 'n', 'i', '*', '@', '%','&','(','0','1','o','p'];
+const textarr = ['a', 'v', 'n', 'i', '*', '@', '%','&','(','0','1','o','p','e','h','m','l','t','u','g','$'];
 // console.log(checkarr);
 
 // console.log(myCell.length);
